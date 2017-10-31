@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Aviators</title>
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css"><!--Linking the CSS file-->
+<script src="js/jquery-3.1.1.min.js"></script><!--Linking JQuery-->
+<script src="js/scripts.js"></script><!--Linking my own JavaScript file-->
+</head>
+
+<body onload="discographyChangeAlbum('stargazers', 2); location.href='#home'; disableBlackOverlay();">
+<div id="loading"></div>
+<!--The first function sets the default position of the Discography page, the second one makes sure the page starts on the homescreen, and the third one disables the black overlay with the "loading" id, which prevents the user from seeing the About screen before the site is properly loaded-->
+
+<div class="main_container"><!--Main container for the entire site. 300viewport-width wide and 200viewport-height tall-->
+	<div class="page" id="about"><!--Container for the About screen with position:absolute to keep all pages in place-->
+		<div class="container"><!--Container for the About screen with position:relative to facilitate positioning elements nested here-->
+			<img src="assets/images/about_background.png" class="background_video_fullscreen" id="about_background">
+			<img src="assets/images/about_lines.png" id="lines_about">
+			<!--There are two main divs for this page. The top one is for navigation and it doesn't change.-->
+			<div class="aboutpage_top">
+				<div class="black"></div>
+				<div class="aboutpage_button" id="contact_button" onclick="aboutpageNavButtonClick('contact_container')"></div>
+				<div class="aboutpage_button" id="resources_button" onclick="aboutpageNavButtonClick('resources_container')"></div>
+				<div class="aboutpage_button" id="equipment_button" onclick="aboutpageNavButtonClick('equipment_container')"></div>
+				<div class="aboutpage_button" id="about_me_button" onclick="aboutpageNavButtonClick('about_me_container')"></div>
+				<a class="back_button_about" id="back_about"></a>
+			</div>
+			<!--The bottom one has four different sub-divs, only one of which is displayed at a time. I use a simple JavaScript function to change which one has display:block and which ones have display:none enabled-->
+			<div class="aboutpage_bottom">
+				<!--The "About Me" page is divided into two main sections. The one on the left only contains one block of text, while the right one also has an image, and an audio player.-->
+				<div class="about_me_container aboutpage_content" id="about_me_container">
+					<div class="about_me_left">
+						<h1>Who I Am</h1>
+						<p1><br>My name is Tyler Shaw a.k.a. Aviators and I hail from Vermont.<br><br>I began my musical journey at the age of 4, when I began playing the violin. I played it for 8 years before quitting and moving on to other things. I figured that playing the violin would never get me anywhere in life, but I now realize that it had grown my skills in music theory, as well as teaching me to read music.<br><br>I picked up the guitar shortly after quitting violin, and instead of taking lessons I taught myself. Instead of going the typical route of learning chords and such, I just played around with solos and learned to play songs by ear.<br><br>In early 2011, I took my first step in music production; I began using a DAW. Garageband was my first one, and it taught me all the basics. I played around with everything I could and pumped out a couple absolutely horrible songs. After months of fiddling with Garageband, I chose to move to a more pro-level DAW. Fruity Loops was  my first choice, and I quickly learned that I wasn’t ready for such a big switch. Having no idea what I was doing was a good thing, though… It allowed me to learn quickly by trial and error. I played around with it for a couple months, and I ended up working on what became my debut album, Reflections of a Dream.</p1>
+					</div>
+					<div class="about_me_right">
+						<div class="about_me_image"><img src="assets/images/about_me_image.png"></div>
+							<h1>What I Do<br></h1>
+							<p1><br>I’m an independent alternative musician, and I dabble in just about every genre in existence, from classical to modern electronica. I’m versed in production, songwriting, sound design, drum programming, and thematic composition.<br><br>I am currently looking for opportunities to score games or films that may require soundtracks. Meanwhile, I’m honing the craft of scoring by working on indie games.<br><br></p1>
+							<h1>Composition</h1>
+							<p1><br>Here in the twenty-first century everything has a soundtrack. Movies, video games, commercials, podcasts, YouTube videos, and many other forms of media require musical accompaniment to convey the right emotion or message.</p1>
+							<p2>No matter what kind of media you create, I’m here to fill all of your soundtrack needs. I can compose any sound, emotion, or genre you could ever need, all at competitive pricing. Send the details of your creative project to Aviators@SoundOfTheAviators.com to get a free quote!<br><br>Need a little music to get you motivated? No problem. Below is a demo reel showing just a little bit of what I’ve got up my sleeve.<br><br><br></p2>
+						<div class="music_player" id="music_player_about">
+							<audio controls src="assets/audio/composition.mp3" type="audio/mpeg" id="compositionAudio"></audio>					
+						</div>						
+					</div>
+				</div>
+				<!--The "Equipment" page has three main divs and an image. The first div spans the entire page, and it contains the paragraph on top. The left and right divs have lists of the different equipment used; clicking any of the items uses a JavaScript function to changes the image and the size of the box in the middle. The smoothing comes from the CSS "transition" property-->
+				<div class="equipment_container aboutpage_content" id="equipment_container">
+					<div class="equipment_top">
+						<p1>A piece of information that people often seek is the type of software or equipment I use. I understand that learning that can be very helpful to some people, and it can satisfy some curiosity I’m sure. Here’s a list of everything I use to make my music.</p1>
+					</div>
+					<div class="equipment_left">
+						<h1>Hardware<br></h1>
+						<ul>
+						<li onclick="equipmentChangeImage('pc', '46.25vw', '26.04vw')">Custom PC (Windows 10, Intel i7 8 Core)</li>
+						<li onclick="equipmentChangeImage('laptop', '32.55vw', '26.04vw')">MSI Ghost 4K Laptop</li>						
+						<li onclick="equipmentChangeImage('ultrawide', '40.67vw', '26.04vw')">LG Ultrawide Monitor</li>
+						<li onclick="equipmentChangeImage('touchscreen', '43.17vw', '26.04vw')">Dell Touch Screen Monitor (For Virtual Mixer)</li>
+						<li onclick="equipmentChangeImage('oxygen', '41.66vw', '26.04vw')">Oxygen49 Keyboard</li>
+						<li onclick="equipmentChangeImage('tascam', '46.875vw', '24.58vw')">Tascam US-1641 Recording Interface</li>
+						<li onclick="equipmentChangeImage('scarlett', '26.04vw', '26.04vw')">Scarlett 2i4 Recording Interface</li>
+						<li onclick="equipmentChangeImage('micropog', '20.57vw', '26.04vw')">Electro-Harmonix POG Pedal</li>
+						<li onclick="equipmentChangeImage('boss', '14.58vw', '26.04vw')">BOSS Harmonizer Pedal</li>
+						<li onclick="equipmentChangeImage('bbe', '46.875vw', '23.48vw')">BBE Sonic Maximizer</li>
+						<li onclick="equipmentChangeImage('babybottle', '26.04vw', '26.04vw')">Blue Microphones Baby Bottle</li>
+						<li onclick="equipmentChangeImage('microphone2', '19.53vw', '26.04vw')">CAD GXL 2200 Microphone</li>
+						<li onclick="equipmentChangeImage('headphones', '21.4vw', '26.04vw')">Audio-Technica M50x Headphones</li>
+						<li onclick="equipmentChangeImage('m_audio', '34.68vw', '26.04vw')">M-Audio Studio Monitor Speakers</li>
+						<li onclick="equipmentChangeImage('ipad', '26.04vw', '26.04vw')">iPad</li>
+						</ul>
+						<h1>Software</h1>
+						<ul>
+						<li onclick="equipmentChangeImage('fl_studio', '32.55vw', '26.04vw')">FL Studio 12</li>
+						<li onclick="equipmentChangeImage('komplete8', '34.68vw', '26.04vw')">Native Instruments Komplete 8</li>
+						<li onclick="equipmentChangeImage('cs6', '36.92vw', '26.04vw')">Adobe CS6 Suite</li>
+						</ul>	
+					</div>
+					<img src="assets/images/transparent.png" id="equipment_image">
+					<div class="equipment_right">
+						<h1>Instruments</h1>
+						<ul>
+						<li onclick="equipmentChangeImage('t_bucket_guitar', '33.80vw', '26.04vw')">Fender T-Bucket (Acoustic Guitar)</li>
+						<li onclick="equipmentChangeImage('dean_guitar', '10.41vw', '26.04vw')">Dean WSM (Bass Guitar)</li>
+						<li onclick="equipmentChangeImage('jackson_guitar', '14.63vw', '26.04vw')">Jackson 7-String Custom (Electric Guitar)</li>
+						<li onclick="equipmentChangeImage('stealth_guitar', '11.35vw', '26.04vw')">Schecter Stealth (Floyd Rose) (Electric Guitar)</li>
+						<li onclick="equipmentChangeImage('jaguar_guitar', '16.51vw', '26.04vw')">1961 Fender Jaguar (Electric Guitar)</li>
+						</ul>					
+						<h1>VST Plugins</h1>
+						<ul>
+						<li onclick="equipmentChangeImage('sylenth1', '40vw', '26.04vw')">Sylenth1</li>
+						<li onclick="equipmentChangeImage('kontakt5', '34.53vw', '26.04vw')">Kontakt 5</li>
+						<li onclick="equipmentChangeImage('guitar_rig', '37.13vw', '26.04vw')">Guitar Rig 5</li>
+						<li onclick="equipmentChangeImage('massive', '36.66vw', '26.04vw')">Massive</li>
+						<li onclick="equipmentChangeImage('fm8', '43.90vw', '26.04vw')">FM8</li>
+						<li onclick="equipmentChangeImage('adrums', '43.54vw', '26.04vw')">Addictive Drums</li>
+						<li onclick="equipmentChangeImage('akeys', '40.93vw', '26.04vw')">Addictive Keys</li>
+						<li onclick="equipmentChangeImage('harmor', '39.16vw', '26.04vw')">Harmor</li>
+						<li onclick="equipmentChangeImage('toxic', '39.84vw', '26.04vw')">Toxic Biohazard</li>
+						</ul>
+					</div>
+				</div>
+				<!--The "Resources" page contains a paragraph, and four drop-down menus below, all of which are customized in CSS and work through some JavaScript functions-->
+				<div class="resources_container aboutpage_content" id="resources_container">
+					<div class="resources_top">
+						<p1>Almost every day, there’s a few emails that I read asking for stems to a certain song, or the MIDI file for a remix someone wants to do. I love it when people remix my songs, but I really don’t have time to render out every custom vocal track or audio resource that everyone asks for. So that’s why this page is here! If there’s a remixing resource you’re looking for, it’s probably right here. I’ve got dozens of vocal tracks, instrumentals, and midis! To download them, simply click on the category, and then select the track you want!</p1>
+					</div>
+					<div class="resources_main">
+						<div class="dropdown" id="vocalDropdown">
+							<div class="dropdownButton" id="vocalDropdownButton" onclick="toggleDropdown('vocalDropdownContent')">VOCALS</div>
+							<div class="dropdownContent" id="vocalDropdownContent">
+								<a href="http://www.mediafire.com/file/eyi6rsuy2t4j196/Angels+and+Demons+Vocals.mp3" target="_blank">Angels and Demons</a>
+								<a href="http://www.mediafire.com/file/9vhicr0bjnqchd6/Applebuckin%27+Vocals.mp3" target="_blank">Applebuckin'</a>
+								<a href="http://www.mediafire.com/file/o94v104l2bmts5o/Far+From+Me+Vocals.mp3" target="_blank">Far From Me</a>
+								<a href="http://www.mediafire.com/file/jw4e0afvc6wglh0/Friendship+Vocals.mp3" target="_blank">Friendship</a>
+								<a href="http://www.mediafire.com/file/6w02w7n25w4ltuw/From+All+Sides+Vocals.mp3" target="_blank">From All Sides</a>
+								<a href="http://www.mediafire.com/file/38j3s1aia7cx8qb/Her+Darker+Side+Vox.mp3" target="_blank">Her Darker Side 1</a>
+								<a href="http://www.mediafire.com/file/q3zeq6ityq9sfa6/Her+Darker+Side+Vox+2.mp3" target="_blank">Her Darker Side 2</a>
+								<a href="http://www.mediafire.com/file/hhz3c4rtem1pc5q/Heroes+Vocals.mp3" target="_blank">Heroes</a>
+								<a href="http://www.mediafire.com/file/xgrbydcm7f22shn/If+You+Only+Knew+Vocal+Stem.mp3" target="_blank">If You Only Knew</a>
+								<a href="http://www.mediafire.com/file/st8od9n0hdhpj0c/In+Wonder+Vocals.mp3" target="_blank">In Wonder</a>
+								<a href="http://www.mediafire.com/file/3hwapsara4a1tgg/Just+Like+You+Vocal+Stem.mp3" target="_blank">Just Like You</a>
+								<a href="http://www.mediafire.com/file/5a2pn3b1y6qddd6/Melody+Vocals.mp3" target="_blank">Melody</a>
+								<a href="http://www.mediafire.com/file/2led921w7sb9pg2/Monster+Vocals+-+130BPM.mp3" target="_blank">Monster</a>
+								<a href="http://www.mediafire.com/file/xoja9b2dt37hbsx/Never+Back+Down+%28Vocal+Stem%29.mp3" target="_blank">Never Back Down</a>
+								<a href="http://www.mediafire.com/file/inrc9ay2m89j43l/Never+Meant+To+Be+Vox+Only.mp3" target="_blank">Never Meant To Be</a>
+								<a href="http://www.mediafire.com/file/upsfd9zli3xwndk/One+Last+Letter+VOCALS.mp3" target="_blank">One Last Letter</a>
+								<a href="http://www.mediafire.com/file/cbfjpvfo5mx5td7/Open+Your+Eyes+Vocals.mp3" target="_blank">Open Your Eyes</a>
+								<a href="http://www.mediafire.com/file/s4uu8hmkdpjdsxx/Someone+Like+Me+Vocal+Stem.mp3" target="_blank">Someone Like Me</a>
+								<a href="http://www.mediafire.com/file/343p9a40j69zw3j/Spirit+of+Chaos+Vocals+Only.mp3" target="_blank">Spirit Of Chaos</a>
+								<a href="http://www.mediafire.com/file/gii4ck5qs2pcmch/The+Last+Page+Vocals.mp3" target="_blank">The Last Page</a>
+								<a href="http://www.mediafire.com/file/434e047g8d65574/Tonight+Vocal+Stem.mp3" target="_blank">Tonight</a>
+							</div>
+						</div>
+						<div class="dropdown" id="instrumentalDropdown">
+							<div class="dropdownButton" id="instrumentalDropdownButton" onclick="toggleDropdown('instrumentalDropdownContent')">INSTRUMENTALS</div>
+							<div class="dropdownContent" id="instrumentalDropdownContent">
+								<a href="http://www.mediafire.com/file/o3jbiemq1igfc2y/Applebuckin%27+Instrumental.mp3" target="_blank">Applebuckin'</a>
+								<a href="http://www.mediafire.com/file/x975863g7b1yus7/Friendship+%28Instrumental%29.mp3" target="_blank">Friendship</a>
+								<a href="http://www.mediafire.com/file/wiz03jov4gqcq06/Her+Darker+Side+Instrumental.mp3" target="_blank">Her Darker Side</a>
+								<a href="http://www.mediafire.com/file/7qn7346kkcl3gsw/In+Wonder+Instrumental.mp3" target="_blank">In Wonder</a>
+								<a href="http://www.mediafire.com/file/gj3a7k2j3t7qiki/Lullaby+Instrumental.mp3" target="_blank">Lullaby</a>
+								<a href="http://www.mediafire.com/file/jvg7g6bgb6le5vk/Never+Back+Down+%28Instrumental%29.mp3" target="_blank">Never Back Down</a>
+								<a href="http://www.mediafire.com/file/k83uttdgn5a6igx/Never+Meant+To+Be+Instrumental.mp3" target="_blank">Never Meant To Be</a>
+								<a href="http://www.mediafire.com/file/cagkiubaj6b09g4/One+Last+Letter+Instrumental.mp3" target="_blank">One Last Letter</a>
+								<a href="http://www.mediafire.com/file/0c5go4emom98sf1/Open+Your+Eyes+Instrumental.mp3" target="_blank">Open Your Eyes</a>
+								<a href="http://www.mediafire.com/file/ubkzam7esavm8ba/Someone+Like+Me+Instrumental.mp3" target="_blank">Someone Like Me</a>
+								<a href="http://www.mediafire.com/file/h74ee8nx8g9q5la/Spirit+of+Chaos+Instrumental.mp3" target="_blank">Spirit of Chaos</a>
+								<a href="http://www.mediafire.com/file/7fl127lbv7o51ud/The+Fear+of+Flight+Instrumental.mp3" target="_blank">The Fear of Flight</a>
+								<a href="http://www.mediafire.com/file/9rzqy7rz5jso9a0/The+Last+Page+Instrumental.mp3" target="_blank">The Last Page</a>
+							</div>
+						</div>
+						<div class="dropdown" id="stemDropdown">
+							<div class="dropdownButton" id="stemDropdownButton" onclick="toggleDropdown('stemDropdownContent')">STEMS</div>
+							<div class="dropdownContent" id="stemDropdownContent">
+								<a href="http://www.mediafire.com/file/ljydcju2sk96x9b/Second+Chances+Stems.zip" target="_blank">Second Chances (All Stems)</a>
+								<a href="http://www.mediafire.com/file/5ct2dx9k9dubhfo/Tonight+Bass%26synths.mp3" target="_blank">Tonight (Bass & Synth)</a>
+								<a href="http://www.mediafire.com/file/614h6wb89n7c8yt/Tonight+Beat.mp3" target="_blank">Tonight (Beat)</a>
+								<a href="http://www.mediafire.com/file/bfti5x72any02pk/Tonight+Guitars.mp3" target="_blank">Tonight (Guitars)</a>
+								<a href="http://www.mediafire.com/file/g8ux07z52ce4ylx/Worlds+Collide+Stems.zip" target="_blank">Worlds Collide (All Stems)</a>
+							</div>
+						</div>
+						<div class="dropdown" id="midiDropdown">
+							<div class="dropdownButton" id="midiDropdownButton" onclick="toggleDropdown('midiDropdownContent')">MIDI</div>
+							<div class="dropdownContent" id="midiDropdownContent">
+								<a href="http://www.mediafire.com/file/no9y1zs8kezcwni/Bittersweet+Midi.mid" target="_blank">Bittersweet</a>
+								<a href="http://www.mediafire.com/file/1i7jbcy60txism7/Constellations+Midi.mid" target="_blank">Constellations</a>
+								<a href="http://www.mediafire.com/file/ojv69vlazs8kp4p/Find+Me.mid" target="_blank">Find Me</a>
+								<a href="http://www.mediafire.com/file/1kt3wg773dv50uw/Friendship+Midi.mid" target="_blank">Friendship</a>
+								<a href="http://www.mediafire.com/file/vxiya6ba62g5ffl/In+Wonder+Midi.mid" target="_blank">In Wonder</a>
+								<a href="http://www.mediafire.com/file/uok956u17lsxbuk/Monster+Midi.mid" target="_blank">Monster</a>
+								<a href="http://www.mediafire.com/file/50dxwwrspms1ilb/Open+Your+Eyes+Midi.mid" target="_blank">Open Your Eyes</a>
+								<a href="http://www.mediafire.com/file/w1w71yto4taqeag/Tonight.mid" target="_blank">Tonight</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--The "Contact" page has a list of addresses on the left side, all of which are working links (the first one is a mailto:). The right side has three text fields, which would supposedly send their contents to whatever central server is used, but right now I just have a JavaScript function that erases them-->
+				<div class="contact_container aboutpage_content" id="contact_container">
+					<div class="contact_left">
+						<p1>You can find me at the places listed below.<br>Alternatively, you can use the contact form provided to the right.</p1>
+						<ul class="contact_list">
+							<li class="list_type">E-MAIL:</li>
+							<li class="list_address"><a href="mailto:aviators@soundoftheaviators.com">aviators@soundoftheaviators.com</a></li><br>
+							<li class="list_type">YOUTUBE:</li>
+							<li class="list_address"><a href = "http://www.youtube.com/user/soundoftheaviators" target="_blank"> youtube.com/user/soundoftheaviators</a></li><br>
+							<li class="list_type">FACEBOOK:</li>
+							<li class="list_address"><a href="http://www.facebook.com/soundoftheaviators" target="_blank">facebook.com/soundoftheaviators</a></li> <br>
+							<li class="list_type">TUMBLR:</li>
+							<li class="list_address"><a href="http://www.aviatorsmusic.tumblr.com" target="_blank">aviatorsmusic.tumblr.com</a></li> <br>
+							<li class="list_type">BANDCAMP</li>
+							<li class="list_address"><a href="http://www.music.soundoftheaviators.com" target="_blank">music.soundoftheaviators.com</a></li> <br>
+							<li class="list_type">SOUNDCLOUD:</li>
+							<li class="list_address"><a href="http://www.soundcloud.com/aviatorscompositions" target="_blank">soundcloud.com/aviatorscompositions</a></li> <br>
+							<li class="list_type">TWITCH:</li>
+							<li class="list_address"><a href="http://www.twitch.tv/aviatorslivestream" target="_blank">twitch.tv/aviatorslivestream</a></li> <br>					
+						</ul>
+					</div>
+					<div class="contact_right">
+						<form>
+  							NAME:<br>
+  							<input type="text" name="name" class="small_field" id="contactName"><br>
+  							E-MAIL:<br>
+  							<input type="text" name="email" class="small_field" id="contactEmail"><br>
+  							MESSAGE:<br>
+							<textarea name="message" cols="40" rows="10" wrap="soft" class="large_field" id="contactMessage">Type your message here!</textarea>
+						</form>
+						<a onclick="eraseContactForm()">SEND!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<!--Container for the transition video between homepage and "About" page-->
+	<!--<div class="page" id="transition_left">
+		<div class="container">
+		</div>
+	</div>-->
+	
+	<div class="page" id="home"><!--Container for homepage-->
+  		<!--Container for the background video with the stars-->
+   			<div class="background_video">
+    			<video autoplay loop muted poster="assets/images/stars.png" class="background_video_fullscreen">
+        			<source src="assets/animations/stars.mp4" type="video/mp4">
+   				</video>
+			</div>
+   		<div class="container">
+			<!--Container for the lines-->
+			<div class="lines">
+				<img src="assets/images/lines.png" id="lines">
+			</div>
+			<!--Four main divs for this page. The top one has the button to the "about" page; the logo one has, well, the logo; the middle one contains all the icons for the social media sites and music stores; and finally the bottom one has the links to the "media" and the "discography" pages-->
+			<div class="homepage_top">
+				<a><p class="home_link" id="about_button">← ABOUT</p></a>
+			</div>
+			<div class="homepage_logo">
+				<div class="aviators_logo_1">
+					<img src="assets/images/aviators_rectangle.png" id="aviators_logo_1">
+				</div>
+				<div class="aviators_logo_2">
+					<img src="assets/images/stargazers.png" id="aviators_logo_2">
+				</div>
+			</div>
+			<div class="homepage_middle">
+				<div class="homepage_middle_left">
+					<div class="discover">
+						<img src="assets/images/Discover.png" id="discover">
+					</div>
+					<div class="homepage_button_holder">
+						<div id="padding_left"></div>
+						
+						<div class="homepage_button_left">
+						<a href="http://music.soundoftheaviators.com/" target="_blank" class="bandcamp_link link"></a>
+						</div>
+						
+						<div class="homepage_button_left">
+						<a href="https://open.spotify.com/artist/3xNCp8cktZ1IGwRregR2yO" target="_blank" class="spotify_link link"></a>
+						</div>
+						
+						<div class="homepage_button_left">
+						<a href="https://itunes.apple.com/us/artist/aviators/id303326512" target="_blank" class="itunes_link link"></a>
+						</div>
+						
+						<div class="homepage_button_left">
+						<a href="https://play.google.com/store/music/artist/Aviators?id=At72hf2kh5zvuitenfdhjil73n4&hl=en_GB" target="_blank" class="googleplay_link link"></a>
+						</div>
+						
+						<div class="homepage_button_left">
+						<a href="http://shop.spreadshirt.com/aviators/" target="_blank" class="spreadshirt_link link"></a>
+						</div>
+						
+					</div>
+				</div>
+				<div class="homepage_middle_right">
+					<div class="follow">
+						<img src="assets/images/Follow.png" id="follow">
+					</div>
+					<div class="homepage_button_holder">
+						<div id="padding_right"></div>
+						
+						<div class="homepage_button_right">
+							<a href="https://twitter.com/Aviators84" target="_blank" class="twitter_link link"></a>
+						</div>
+						
+						<div class="homepage_button_right">
+							<a href="https://www.facebook.com/SoundOfTheAviators/" target="_blank" class="facebook_link link"></a>
+						</div>
+						
+						<div class="homepage_button_right">
+							<a href="http://aviatorsmusic.tumblr.com/" target="_blank" class="tumblr_link link"></a>
+						</div>
+						
+						<div class="homepage_button_right">
+							<a href="https://www.twitch.tv/aviatorslivestream" target="_blank" class="twitch_link link"></a>
+						</div>
+					</div>
+				</div>			
+			</div>
+			<div class="homepage_bottom">
+				<a><p class="home_link" id="media_button">←MEDIA</p></a>
+				<a><p class="home_link" id="discographyButton">DISCOGRAPHY →</p></a>
+			</div>
+		</div>
+	</div>
+	
+	<!--Container for the transition video between homepage and "Discography" page-->
+	<!--<div class="page" id="transition_right">	
+		<div class="container">
+		</div>
+	</div>-->
+	<!--Container for the category selection screen-->
+	<!--<div class="page" id="release_category_selection">
+		<div class="container">
+		</div>
+	</div>-->
+	
+	<!--Container for the "Discography" tabs-->
+	<div class="page" id="discographyPage">
+		<div class="container">
+			<img src="assets/images/from_all_sides/background.jpg" class="background_video_fullscreen" id="discography_background">
+			<img src="assets/images/discography_line.png" id="lines_discography">
+			<!--Three main divs for this page, the top one just has the back button, the middle one houses the two large arrows on the sides, and the main bulk of content in the middle. The bottom one just contains the little album thumbnails-->
+			<div class="discographypage_top">
+				<a><div class="back_button" id="back_discography"></div></a>
+			</div>
+			<div class="discographypage_middle">
+				<div class="discographypage_middle_1">
+					<div class="left_arrow_discography" onclick="nextAlbum()">
+							<div class="arrow left_arrow"></div>
+					</div>
+				</div>
+				<div class="discographypage_middle_2">
+					<div class="album_cover">
+						<img src="assets/images/from_all_sides/cover.jpg"  id="album_cover">
+					</div>
+					<div class="album_buttons_holder">
+					
+						<div class="album_button">
+							<a href="http://music.soundoftheaviators.com/album/from-all-sides-deluxe-version" target="_blank" class="bandcamp_link link" id="discography_bandcamp"></a>
+						</div>
+						
+						<div class="album_button">
+							<a href="https://open.spotify.com/artist/3xNCp8cktZ1IGwRregR2yO" target="_blank" class="spotify_link link" id="discography_spotify"></a>
+						</div>
+						
+						<div class="album_button">
+							<a href="https://itunes.apple.com/us/artist/aviators/id303326512" target="_blank" class="itunes_link link" id="discography_itunes"></a>
+						</div>
+						
+						<div class="album_button">
+							<a href="https://play.google.com/store/music/artist/Aviators?id=At72hf2kh5zvuitenfdhjil73n4&hl=en_GB" target="_blank" class="googleplay_link link" id="discography_googleplay"></a>
+						</div>
+					</div>
+				</div>
+				<div class="discographypage_middle_3" id="albumText">
+					<div class="title">
+						<h1 id="albumTitle">FROM ALL SIDES</h1><h2 id="albumDate">APRIL 22, 2013</h2>
+					</div>
+					<div class="tracklist">
+						<div class="song" id="song1"><p1 id="song1title">01 - Synthesia</p1><p2 id="song1feature"></p2><img src="assets/images/instrumental_button.png" class="lyrics_button" id="song1_lyrics_button"></div>
+						<div class="song" id="song2"><p1 id="song2title">02 - Shadows</p1><p2 id="song2feature">(featuring Glaze)</p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song2_lyrics_button"></div>
+						<div class="song" id="song3"><p1 id="song3title">03 - From All Sides</p1><p2 id="song3feature">(featuring Bronyfied)</p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song3_lyrics_button"></div>
+						<div class="song" id="song4"><p1 id="song4title">04 - Constellations</p1><p2 id="song4feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song4_lyrics_button"></div>
+						<div class="song" id="song5"><p1 id="song5title">05 - More Than Meets The Eye</p1><p2 id="song5feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song5_lyrics_button"></div>
+						<div class="song" id="song6"><p1 id="song6title">06 - Far From Me</p1><p2 id="song6feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song6_lyrics_button"></div>
+						<div class="song" id="song7"><p1 id="song7title">07 - Voices Of The Crowd</p1><p2 id="song7feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song7_lyrics_button"></div>
+						<div class="song" id="song8"><p1 id="song8title">08 - Storm</p1><p2 id="song8feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song8_lyrics_button"></div>
+						<div class="song" id="song9"><p1 id="song9title">09 - Lights</p1><p2 id="song9feature">(featuring Feather)</p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song9_lyrics_button"></div>
+						<div class="song" id="song10"><p1 id="song10title">10 - Bring Me Back To Life</p1><p2 id="song10feature">(featuring Vortex and Yelling At Cats)</p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song10_lyrics_button"></div>
+						<div class="song" id="song11"><p1 id="song11title">11 - Heroes</p1><p2 id="song11feature">(featuring Bronyfied)</p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song11_lyrics_button"></div>
+						<div class="song" id="song12"><p1 id="song12title">12</p1><p2 id="song12feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song12_lyrics_button"></div>
+						<div class="song" id="song13"><p1 id="song13title">13</p1><p2 id="song13feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song13_lyrics_button"></div>
+						<div class="song" id="song14"><p1 id="song14title">14</p1><p2 id="song14feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song14_lyrics_button"></div>
+						<div class="song" id="song15"><p1 id="song15title">15</p1><p2 id="song15feature"></p2><img src="assets/images/lyrics_button.png" class="lyrics_button" id="song15_lyrics_button"></div>
+						<div class="song" id="song_empty"></div>
+					</div>
+					<div class="music_player" id="music_player_discography">
+						<audio controls src="https://p4.bcbits.com/download/track/0ea866f0c018485d001dc40d3a933b7e/mp3-v0/3032660944?fsig=51219e7a82ed7c56365980282b88ce5c&id=3032660944&stream=1&ts=1484438400.0&token=1484438460_bbe81a9c33d2991cd3cb30201420b49e95b0831d" type="audio/mpeg" id="discographyAudio"></audio>
+					</div>
+				</div>
+				<div class="discographypage_middle_4">
+					<div class="right_arrow_discography" onclick="previousAlbum()">
+							<div class="arrow right_arrow"></div>
+					</div>
+				</div>
+			</div>
+			<div class="discographypage_bottom">
+				<div class="albums_scroll">
+					<img src="assets/images/a_song_that_never_ends/cover.jpg" class="album_icon" id="album1" onclick="discographyChangeAlbum('a_song_that_never_ends', 1)">
+					<img src="assets/images/stargazers/cover.jpg" class="album_icon" id="album2" onclick="discographyChangeAlbum('stargazers', 2)">
+					<img src="assets/images/from_oceans_to_skies/cover.jpg" class="album_icon" id="album3" onclick="discographyChangeAlbum('from_oceans_to_skies', 3)">
+					<img src="assets/images/building_better_worlds/cover.jpg" class="album_icon" id="album4" onclick="discographyChangeAlbum('building_better_worlds', 4)">
+					<img src="assets/images/ghosts_in_the_code/cover.jpg" class="album_icon" id="album5" onclick="discographyChangeAlbum('ghosts_in_the_code', 5)">
+					<img src="assets/images/mirrors/cover.jpg" class="album_icon" id="album6" onclick="discographyChangeAlbum('mirrors', 6)">
+					<img src="assets/images/from_all_sides/cover.jpg" class="album_icon" id="album7" onclick="discographyChangeAlbum('from_all_sides', 7)">
+					<img src="assets/images/aeterno/cover.jpg" class="album_icon" id="album8" onclick="discographyChangeAlbum('aeterno', 8)">
+					<img src="assets/images/the_adventure/cover.jpg" class="album_icon" id="album9" onclick="discographyChangeAlbum('the_adventure', 9)">
+					<img src="assets/images/reflections_of_a_dream/cover.jpg" class="album_icon" id="album10" onclick="discographyChangeAlbum('reflections_of_a_dream', 10)">
+					<img src="assets/images/never_say_forever/cover.jpg" class="album_icon" id="album11" onclick="discographyChangeAlbum('never_say_forever', 11)">
+				</div>
+				<div class="black"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!--Container for the transition video between homepage and "Media" tabs-->
+	<!--<div class="page" id="transition_down">
+		<div class="container">
+		</div>
+	</div>-->
+	<!--<br>-->
+	
+	<!--Container for the "Media" page-->
+	<div class="page" id="media">
+		<div class="container">
+			<img src="assets/images/media_background.jpg" class="background_video_fullscreen" id="media_background">
+			<img src="assets/images/media_lines.png" id="lines_media">
+			<!--Three main divs. Top one has the back button, middle one is the scrolling part, and the bottom one has the video in it-->
+			<div class="media_top">
+				<a><div class="media_back_button" id="back_media"></div></a>
+			</div>
+			<div class="media_scroll">
+				<div class="video_thumbnail" id="video24" onclick="changeVideo('https://www.youtube.com/embed/9FSqcxF7a6M?rel=0')"><img src="assets/images/video_thumbs/video24.jpg"></div>
+				<div class="video_thumbnail" id="video23" onclick="changeVideo('https://www.youtube.com/embed/1TvUtGLZvG8?rel=0')"><img src="assets/images/video_thumbs/video23.jpg"></div>
+				<div class="video_thumbnail" id="video22" onclick="changeVideo('https://www.youtube.com/embed/IbDtA3jvT-g?rel=0')"><img src="assets/images/video_thumbs/video22.jpg"></div>
+				<div class="video_thumbnail" id="video21" onclick="changeVideo('https://www.youtube.com/embed/fX5SBZoBiMM?rel=0')"><img src="assets/images/video_thumbs/video21.jpg"></div>
+				<div class="video_thumbnail" id="video20" onclick="changeVideo('https://www.youtube.com/embed/ka36MMcxpUs?rel=0')"><img src="assets/images/video_thumbs/video20.jpg"></div>
+				<div class="video_thumbnail" id="video19" onclick="changeVideo('https://www.youtube.com/embed/UHzWGFN6NgQ?rel=0')"><img src="assets/images/video_thumbs/video19.jpg"></div>
+				<div class="video_thumbnail" id="video18" onclick="changeVideo('https://www.youtube.com/embed/mXwthPlJDBg?rel=0')"><img src="assets/images/video_thumbs/video18.jpg"></div>
+				<div class="video_thumbnail" id="video17" onclick="changeVideo('https://www.youtube.com/embed/oCxiD7apLwg?rel=0')"><img src="assets/images/video_thumbs/video17.jpg"></div>
+				<div class="video_thumbnail" id="video16" onclick="changeVideo('https://www.youtube.com/embed/2_mJIPXrdag?rel=0')"><img src="assets/images/video_thumbs/video16.jpg"></div>
+				<div class="video_thumbnail" id="video15" onclick="changeVideo('https://www.youtube.com/embed/FDm9Nw8Ao04?rel=0')"><img src="assets/images/video_thumbs/video15.jpg"></div>
+				<div class="video_thumbnail" id="video14" onclick="changeVideo('https://www.youtube.com/embed/TG3o-y1SwF4?rel=0')"><img src="assets/images/video_thumbs/video14.jpg"></div>
+				<div class="video_thumbnail" id="video13" onclick="changeVideo('https://www.youtube.com/embed/7LhTbrnZsGo?rel=0')"><img src="assets/images/video_thumbs/video13.jpg"></div>
+				<div class="video_thumbnail" id="video12" onclick="changeVideo('https://www.youtube.com/embed/wpndh6bm36w?rel=0')"><img src="assets/images/video_thumbs/video12.jpg"></div>
+				<div class="video_thumbnail" id="video11" onclick="changeVideo('https://www.youtube.com/embed/rpqygces3vI?rel=0')"><img src="assets/images/video_thumbs/video11.jpg"></div>
+				<div class="video_thumbnail" id="video10" onclick="changeVideo('https://www.youtube.com/embed/SAi8dTFcYHA?rel=0')"><img src="assets/images/video_thumbs/video10.jpg"></div>
+				<div class="video_thumbnail" id="video9" onclick="changeVideo('https://www.youtube.com/embed/fwJyuAavSyY?rel=0')"><img src="assets/images/video_thumbs/video9.jpg"></div>
+				<div class="video_thumbnail" id="video8" onclick="changeVideo('https://www.youtube.com/embed/Y3CHYRHTDeg?rel=0')"><img src="assets/images/video_thumbs/video8.jpg"></div>
+				<div class="video_thumbnail" id="video7" onclick="changeVideo('https://www.youtube.com/embed/p25nbtXSrTQ?rel=0')"><img src="assets/images/video_thumbs/video7.jpg"></div>
+				<div class="video_thumbnail" id="video6" onclick="changeVideo('https://www.youtube.com/embed/Q9MK26KCxAE?rel=0')"><img src="assets/images/video_thumbs/video6.jpg"></div>
+				<div class="video_thumbnail" id="video5" onclick="changeVideo('https://www.youtube.com/embed/F_9f-Gs2IxU?rel=0')"><img src="assets/images/video_thumbs/video5.jpg"></div>
+				<div class="video_thumbnail" id="video4" onclick="changeVideo('https://www.youtube.com/embed/Djy7cKkqTkk?rel=0')"><img src="assets/images/video_thumbs/video4.jpg"></div>
+				<div class="video_thumbnail" id="video3" onclick="changeVideo('https://www.youtube.com/embed/kstkj6ZhxWs?rel=0')"><img src="assets/images/video_thumbs/video3.jpg"></div>
+				<div class="video_thumbnail" id="video2" onclick="changeVideo('https://www.youtube.com/embed/zy2afkGBcnE?rel=0')"><img src="assets/images/video_thumbs/video2.jpg"></div>
+				<div class="video_thumbnail" id="video1" onclick="changeVideo('https://www.youtube.com/embed/Oa_PSgO6PAY?rel=0')"><img src="assets/images/video_thumbs/video1.jpg"></div>
+			</div>
+			<div class="media_main">
+				<iframe src="https://www.youtube.com/embed/9FSqcxF7a6M?rel=0" frameborder="1" allowfullscreen id="current_video"></iframe>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+<!--Smooth scrolling functions from JQuery-->
+<script>
+	$(function(){
+    	$("#about_button").click(function(){
+        	$('body').animate({scrollLeft: $("#about").offset().left}, 1000);return false;
+    	});
+	});
+</script>
+<script>
+	$(function(){
+    	$("#back_about").click(function(){
+        	$('body').animate({scrollLeft: $("#home").offset().left}, 1000);return false;
+    	});
+	});
+</script>
+<script>
+	$(function(){
+    	$("#media_button").click(function(){
+        	$('body').animate({scrollTop: $("#media").offset().top}, 1000);return false;
+    	});
+	});
+</script>
+<script>
+	$(function(){
+    	$("#discographyButton").click(function(){
+        	$('body').animate({scrollLeft: $("#discographyPage").offset().left}, 1000);return false;
+    	});
+	});
+</script>
+<script>
+	$(function(){
+    	$("#back_discography").click(function(){
+        	$('body').animate({scrollLeft: $("#home").offset().left}, 1000);return false;
+    	});
+	});
+</script>
+<script>
+	$(function(){
+    	$("#back_media").click(function(){
+        	$('body').animate({scrollTop: $("#home").offset().top}, 1000);return false;
+    	});
+	});
+</script>
+
+</body>
+</html>

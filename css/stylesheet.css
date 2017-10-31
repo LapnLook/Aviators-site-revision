@@ -1,0 +1,331 @@
+@charset "utf-8";
+
+/*Disables vertical scrolling, but scrollLeft() didn't work without the horizontal counterpart so I had to keep that*/
+html{
+	overflow-y:hidden; overflow-x: scroll;
+}
+/*But it's hidden because it's 0 pixels high. At least in browsers that support webkit...*/
+::-webkit-scrollbar{
+	height:0px;
+}
+
+/*Remove all padding and margins on the site by default. Also set default font-family*/
+*{ margin: 0px; padding: 0px; font-family: Arial, Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";}
+
+/*The black loading screen is positioned over the screen and is exactly the right size*/
+#loading{display: block;position: fixed;top:0;left:0;width:100vw;height:100vh;z-index: 999;background-color: black;}
+
+/*Defining the main container*/
+.main_container
+{ position:relative; top:0; left:0; display:block; width:300vw; height:200vh;}
+
+.page
+{display:block; width:100vw; height:100vh;}
+
+/*Positioning the individual pages*/
+#about
+{display:block; position:absolute; top:0;left:0;}
+/*#transition_left
+{display:block; float:left;}*/
+#home
+{display:block; position:absolute; top:0;left:100vw;}
+/*#transition_right
+{display:block; float:left;}*/
+/*#release_category_selection
+{display:block; float:left;}*/
+#discographyPage
+{display:block; position:absolute; top:0;left:200vw;}
+/*#transition_down
+{display:block; float:left;}*/
+#media
+{display:block; position:absolute; top:100vh;left:100vw;}
+
+
+/*Customizing the scrollbars in the About page (vertical) and the Media page (horizontal)*/
+::-webkit-scrollbar{
+  width: 6px;
+}
+.media_scroll::-webkit-scrollbar{
+  height: 1.1vh;
+}
+::-webkit-scrollbar-track{
+  background-color: rgba(191, 182, 182, 1);
+}
+::-webkit-scrollbar-track:horizontal{
+  background-color: rgba(191, 182, 182, 0.1);
+  border-radius:6px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(215, 86, 171, 1);
+}
+::-webkit-scrollbar-thumb:horizontal{
+  background-color: rgba(215, 86, 171, 1);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-button:horizontal{
+	border-radius:6px;
+}
+::-webkit-scrollbar-button:horizontal:increment{
+	background-color:#d94da8;
+	background-image: url(../assets/images/arrow_right.svg);
+	background-size: 200% 200%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+::-webkit-scrollbar-button:horizontal:decrement{
+	background-color:#d94da8;
+	background-image: url(../assets/images/arrow_left.svg);
+	background-size: 200% 200%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+::-webkit-scrollbar-button:horizontal:increment:hover{
+	background-color:#2b80a8;
+	background-position: top center;
+}
+::-webkit-scrollbar-button:horizontal:decrement:hover{
+	background-color:#2b80a8;
+	background-position: top center;
+}
+
+
+
+/*Setting up a container in each page for positioning purposes*/
+.container{position:relative; width:100vw; height:100vh }
+
+/*Styling the elements on the homepage*/
+	/*Background video*/
+	.background_video{ position:absolute; top:0; left:0; width:100%; height:100%;}
+	#home .background_video{top:-5%;}/*The compressed video has a small black line at the top, this just cuts that off*/
+	.background_video_fullscreen{ position:absolute; top:0; left:0;right:0;bottom:0;width:100%; z-index:-1; }
+	/*Lines*/
+	.lines{ position:absolute; top:0; left:0; right:0; bottom:0; }
+	#lines{ position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+	/*Four main divs*/
+	.homepage_top{display:block; position:relative; top:0; left:0; width:100%; height:30%; z-index:2;}
+	.homepage_logo{display:block; position:relative; top:0; left:0; width:100%; height:30%; z-index:2;}
+	.homepage_middle{display:block; position:relative; top:0; left:0; width:100%; height:20%; z-index:2;}
+	.homepage_bottom{display:block; position:relative; top:0; left:0; width:100%; height:20%; z-index:2;}
+	/*About button*/
+	.home_link{font-size: 4vh;}
+	#about_button{display:block; position:absolute; bottom:62%; color:rgba(159,113,190,1.00)}
+	#about_button:hover{color:rgba(54,136,233,1.00); cursor:pointer;}
+	/*Logo*/
+	.aviators_logo_1{display:block; position:absolute; top:0; left:19%; width:62%; height:73.3%; margin:auto; z-index: 3;}
+	#aviators_logo_1{width:100%; height:100%;}
+	.aviators_logo_2{display:block; position:absolute; top:14%; left:19.8%; width:60.8%; height:54%; margin:auto; z-index: 4;}
+	#aviators_logo_2{width:100%; height:100%;}
+	/*Buttons in the middle*/
+	.homepage_middle_left{display:block; position:relative; float:left; width:50%; height:100%; box-sizing: border-box;}
+	.homepage_middle_right{display:block; position:relative; float:left; width:50%; height:100%; box-sizing: border-box;}
+	.discover{display:block; position:absolute; width:60%; height:50%; right:0;}
+	#discover{height:60%; position:relative; left:22%;}
+	.follow{display:block; position:absolute; width:60%; height:50%; left:0;}
+	#follow{height:60%; position:relative; left:50%;}
+	.homepage_button_holder{display:block; position:absolute; top:50%; width:100%; height:50%;}
+	.homepage_button_left{display:block; float:left; width:10%; height:100%;}
+		.link{display:block;height:50%;width:100%;background-size: auto 200%;background-repeat: no-repeat;background-position: top center;}
+		.link:hover{background-position: center bottom;}
+		.bandcamp_link{background-image: url(../assets/images/bandcamp_logo.svg);}
+		.spotify_link{background-image: url(../assets/images/spotify_logo.svg);}
+		.itunes_link{background-image: url(../assets/images/itunes_logo.svg);}
+		.googleplay_link{background-image: url(../assets/images/googleplay_logo.svg);}
+		.spreadshirt_link{background-image: url(../assets/images/spreadshirt_logo.svg);}
+		.twitter_link{background-image: url(../assets/images/twitter_logo.svg);}
+		.facebook_link{background-image: url(../assets/images/facebook_logo.svg);}
+		.tumblr_link{background-image: url(../assets/images/tumblr_logo.svg);}
+		.twitch_link{background-image: url(../assets/images/twitch_logo.svg);}
+	#padding_left{display: block; float: left; height:100%; width:40%;}
+	.homepage_button_right{display:block; float:left; width:12%; height:100%;}
+	#padding_right{display: block; float: left; height:100%; width:15%;}
+	/*Media & Discography buttons*/
+	#media_button{display:block; position:absolute; transform: rotate(-90deg); bottom:30%; left:42.5%; color:rgba(255,137,210,1.00);}
+	#media_button:hover{color:rgba(54,136,233,1.00); cursor:pointer;}
+	#discographyButton{display:block; position:absolute; right:0; bottom:49%; color:rgba(255,137,210,1.00);}
+	#discographyButton:hover{color:rgba(54,136,233,1.00); cursor:pointer;}
+
+/*Styling the elements on the discography page*/
+	/*The line on the bottom*/
+	#lines_discography{ position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+	/*Three main divs*/
+	.discographypage_top{display:block; position:relative; top:0; left:0; width:100%; height:10%; z-index:2;}
+	.discographypage_middle{display:block; position:relative; top:0; left:0; width:100%; height:65%; z-index:2;box-sizing: border-box;padding-bottom: 3%;}
+	.discographypage_bottom{display:block; position:relative; top:0; left:0; width:100%; height:25%; z-index:2;}
+	/*Back button*/
+	.back_button{display:block; position:absolute; top:15%; left:1.5%; height:75%; width:4%; background-image: url(../assets/images/back_button_left.svg); background-repeat: no-repeat;background-size:auto 203%;background-position: top center;}
+	.back_button:hover{background-position: bottom center; cursor:pointer;}
+	/*#back_button_discography{display:block; position:relative; height:100%;z-index: 2;}*/
+	/*Styling the middle four divs*/
+	.discographypage_middle_1{display:block;float:left;position: relative;width:16%;height:100%;}
+	.discographypage_middle_2{display:block;float:left;position: relative;width:25%;height:100%;}
+	.discographypage_middle_3{display:block;position: relative;float:left;width:50%;height:100%;padding-left: 3vw;box-sizing: border-box;color:white;}
+	.discographypage_middle_4{display:block;float:left;position: relative;width:9%;height:100%;}
+	.left_arrow_discography{display:block;position:absolute;top:50%;left:15%; height:32%; width:85%;}
+	.arrow{display:block;background-repeat: no-repeat; cursor:pointer;}
+	.left_arrow:hover{background-position: 0 100% ;}
+	.left_arrow{display:block; width:30%; height:100%; background-size: 100% 200%; background-position: 0 0;background-image: url(../assets/images/arrow_left.svg);}
+	.right_arrow_discography{position:absolute;top:50%;right:33.3%; height:32%;width:66.7%;}
+	.right_arrow:hover{background-position: right 100%;}
+	.right_arrow{display:block; width:100%; height:100%; background-size: 100% 200%; background-position: right 0;background-image: url(../assets/images/arrow_right.svg);}
+	.album_cover{display: block; position:relative;top:0;left:0;width:100%;height:77%;}
+	#album_cover{max-width:100%; max-height:100%; display:block;margin: auto;}
+	.album_buttons_holder{display:block;position:relative;width:100%;height:23%;}
+	.album_button{display: block; float:left; position:relative; width:25%; height:100%;}
+	.album_button .link{position:absolute;bottom:0;height:50%; width:100%;}
+	.title{display:block;height:10%; width:100%;}
+	.title h1,h2{display:inline-block;}
+	.title h1{font-size:3.5vh}
+	.title h2{font-size:2.5vh;font-weight: normal;padding-left: 1vw;box-sizing: border-box;}
+	.tracklist{display: block; width:100%; height:80%}
+	.song{position: relative; display: block; height:6.25%; width:100%;}
+	.song p1,p2{position:relative; bottom:0;left:0; display: inline;float: left;font-weight: 500;}
+	.song .lyrics_button{position:absolute;top:10%;right:0;height:80%;}
+	.song p1{font-size: 2vh;box-sizing: border-box;padding-top: 2px;padding-left: 5px;}
+	.song p2{font-size: 1.5vh;padding-top: 0.4vh;padding-left: 0.5vw;box-sizing: border-box;}
+	#song1{}
+	#song2{}
+	#song3{}
+	#song4{}
+	#song5{}
+	#song6{}
+	#song7{}
+	#song8{}
+	#song9{}
+	#song10{}
+	#song11{}
+	#song12{}
+	#song13{}
+	#song14{}
+	#song15{}
+	.music_player{display:block;position:absolute;bottom:0;margin-left:0;width:94%; height:10%; z-index: 4;}
+	.play_button{display:block;float:left;position:relative; width:5%;height:100%;z-index: 4}
+	#play_button_discography{display:block;position:absolute;left:0; max-width: 100%; max-height: 100%;}
+	.player_line{display:block;float:left;position:relative; width:90%;height:100%;z-index: 4}
+	#player_line_discography{display:block;position:absolute;left:0; width:100%; max-height: 100%;}	.pause_button{display:block;float:left;position:relative;width:5%;height:100%;z-index: 4}
+	#pause_button_discography{display:block; position:absolute;right:0;max-width: 100%; max-height: 100%;}
+	.player_dot{display:block;position:absolute;left:0%; width:100%;height:100%; z-index: 5;}
+	#player_dot_discography{position:relative;top:7.5%; display:block; max-width: 100%; max-height: 100%;}
+	/*styling the bottom divs*/
+	.black{background-color: black; position:absolute; bottom:0; left:0; width:100%; height:37%;z-index:3;}
+	.album_icon{display:block; position:absolute;border-style: solid;border-color: white;border-width: 3px;filter:grayscale(85%);height:50%;width:auto;z-index:4;top:10%;}
+	#album1{left:1.5%;}
+	#album1:hover{left:0.5%;}	
+	#album2{left:11%;}
+	#album2:hover{left:9.5%;}
+	#album3{left:20%;}
+	#album3:hover{left:18.5%;}
+	#album4{left:29%;}
+	#album4:hover{left:27.5%;}
+	#album5{left:38%;}
+	#album5:hover{left:36.5%;}
+	#album6{left:47%;}
+	#album6:hover{left:45.5%;}
+	#album7{left:56%;}
+	#album7:hover{left:54.5%;}
+	#album8{left:65%;}
+	#album8:hover{left:63.5%;}
+	#album9{left:74%;}
+	#album9:hover{left:72.5%;}
+	#album10{left:83%;}
+	#album10:hover{left:81.5%;}
+	#album11{left:92%;}
+	#album11:hover{left:90%;}
+	.album_icon:hover{top:0;height:75%;filter:grayscale(0%); cursor:pointer;}
+
+	/*This one is applied to the previewed song by JavaScript*/
+	.selected{background-image: url(../assets/images/selected_song.png);background-size: 100% 100%;background-repeat: no-repeat;background-position: 0px 0px;}
+
+/*Styling the elements on the about page*/
+	/*The line on the bottom*/
+	#lines_about{ position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+	/*Two main divs*/
+	.aboutpage_top{display:block;position:relative;width:100%;height:18%;}
+	.aboutpage_bottom{display:block;position:relative;width:100%;height:82%;}
+	.aboutpage_bottom a{z-index:0;}
+	/*Top div*/
+	.aboutpage_top .black{background-color: black; position:absolute; top:0; left:0; width:100%; height:57%;z-index:1;}
+	.back_button_about{display:block; position:absolute; top:10%; right:1.5%; height:40%; width:10%; background-image: url(../assets/images/back_button_right.svg); background-repeat: no-repeat;background-size:auto 200%;background-position: top right; z-index:3;}
+	.back_button_about:hover{background-position: bottom right; cursor:pointer;}
+	.aboutpage_button{display:block;position:absolute; top:45%; height:30%;width:16.6%;background-size: auto 200%;background-repeat: no-repeat; background-position: top center;z-index:3;}
+	.aboutpage_button:hover{background-position: bottom center; cursor:pointer;}
+	#contact_button{background-image: url(../assets/images/contact_button.svg);left:16.6%;}
+	#resources_button{background-image: url(../assets/images/resources_button.svg);left:33.3%;}
+	#equipment_button{background-image: url(../assets/images/equipment_button.svg);left:50%;}
+	#about_me_button{background-image: url(../assets/images/about_me_button.svg);left:66.6%;}
+	.aboutpage_content{display:block;position:relative;top:0;left:0;width:100%;height:100%;color:white;}
+	.aboutpage_content h1{display:block;font-size: 5.55vh;font-weight: 500;}
+	.aboutpage_content p1,p2,li{display:block;font-size: 2vh; font-weight: 100;}
+
+	/*The "About Me" page*/
+	.about_me_left{display:block;position:relative;float:left;height:100%;width:37.5%; padding-right:2%;padding-left:7.5%;box-sizing: border-box;text-align:justify;}
+	.about_me_left h1{text-align: right;}
+	.about_me_right{display:block;position:relative;float:left;height:100%;width:62.5%; padding-right:7.5%;box-sizing: border-box;text-align:justify;}
+	#music_player_about{display:block;position:relative;width:100%;height:12.5%;}
+	.about_me_image{display:block;width:25vw;height:48.7vh;float:left;padding-right:1%;padding-bottom: 2%;}
+	.about_me_image img{max-width:100%;max-height:100%;}
+
+	audio{display: block;width:100%;}
+	#music_player_discography audio{width:calc(100% + 50px);}
+	audio::-webkit-media-controls-panel{background-color:rgba(0,0,0,0.00);}
+	audio::-webkit-media-controls-current-time-display{color:#d94da8;}
+	audio::-webkit-media-controls-time-remaining-display{color:#d94da8;}
+	audio::-webkit-media-controls-timeline{background-color:#d94da8;}
+	audio::-webkit-media-controls-volume-slider{background-color:#d94da8;}
+
+	/*The "Equipment" page*/
+	.equipment_container{position:relative;text-align:center;}	
+	.equipment_top{display:block;width:100%;height:10%;padding-left: 25%;padding-right:25%;box-sizing: border-box;text-align: center;}
+	.equipment_left{display:inline-block; width:25%;height:90%;text-align:right;padding-right:1%;padding-top:1%;box-sizing: border-box; vertical-align: top;}
+	#equipment_image{display: inline-block; width:0; height:0; border-style: solid; border-color: white; vertical-align: top; margin-top:5%;
+	-webkit-transition: width 300ms, height 300ms;
+	transition: width 300ms, height 300ms;}
+	.equipment_container h1{padding-bottom: 1%;padding-top: 1%;}
+	.equipment_container li{padding-bottom: 0.2%;}
+	.equipment_container li:hover{color:cyan; cursor:pointer;}
+	.equipment_right{display:inline-block;width:25%; height:90%;text-align:left;padding-left:1%;padding-top:1%;box-sizing: border-box; vertical-align: top;}
+
+	/*The "Resources" page*/
+	.resources_container{position:relative;text-align:center;}	
+	.resources_top{display:block;width:100%;height:20%;padding-left: 25%;padding-right:25%;box-sizing: border-box;text-align: center;}
+	.resources_main{display: block;width:100%;height:80%;position:relative;text-align:center;}
+	.dropdown{display: inline-block;width:15%;height:auto;margin:2.5%;position:relative;vertical-align: top;}
+	.dropdownButton{display:block;height:7.5%;color:white;background-color:#d25aa0;font-size: 3vh;padding-top: 0.5vh;box-sizing: border-box;}
+	.dropdownButton:hover{background-color: #2b80a8; cursor:pointer;}
+	.dropdownContent{max-height: 44vh; overflow-y: scroll; display:none;}
+	.dropdownContent a{display:block; background-color: white;color:black;font-size: 2vh;padding-top: 1vh;padding-bottom: 1vh;text-decoration: none;}
+	.dropdownContent a:hover{background-color: #2b80a8; cursor:pointer;}
+
+	.show{display:block;}/*For JavaScript use; this determines which dropdown menu is open*/
+
+	/*The "Contact" page*/
+	.contact_left{height:100%;width:60%;color:white;box-sizing: border-box;padding-left: 10%;padding-top: 2.5%;position:relative;float:left;}
+	.contact_left p1{display:block;height:10%;padding-bottom: 5%;font-size:2.5vh;}
+	.contact_list{position:relative;}
+	.contact_list li{display:inline-block;padding-bottom: 3.5%;font-size:2.5vh;}
+	.list_type{position:relative;left:0;}
+	.list_address{position:absolute;left:25%;}
+	.list_address a{text-decoration: none;color:white;}
+	.list_address a:hover{color:#2b80a8; cursor:pointer;}
+	.contact_right{float:left;height:100%;width:40%;color:#d94da8;box-sizing: border-box;padding-top: 2.5%;font-size: 3vh;}
+	.small_field{width: 60%;padding: 12px 20px;margin: 8px 0;display: inline-block;border: 2px solid #E370BA;border-radius: 4px;box-sizing: border-box;font-size:2.5vh;}
+	.large_field{padding: 12px 20px;margin: 8px 0;display: block;border: 2px solid #E370BA;border-radius: 4px;box-sizing: border-box;font-size:2vh;overflow-y: scroll;}
+	.contact_right a{font-size:3.5vh;position:absolute;right:16%;}
+	.contact_right a:hover{color:#2b80a8; cursor:pointer;}
+
+	/*For JavaScript to hide or make these pages visible*/
+	.about_me_container{display:block;}
+	.equipment_container{display:none;}
+	.resources_container{display:none;}
+	.contact_container{display:none;}
+
+/*Styling the elements on the media page*/
+	#lines_media{position:absolute;top:0;left:0;width:100%;;height:100%;z-index: -1;}
+	.media_top{display:block;position:relative;width:100%;height:18%;z-index: 1;}
+	.media_back_button{display:block; position:absolute; top:10%; right:43.5%; height:40%; width:10%; background-image: url(../assets/images/back_button_up.svg); background-repeat: no-repeat;background-size:auto 200%;background-position: top right; z-index:3;}
+	.media_back_button:hover{background-position: bottom right; cursor:pointer;}
+	.media_scroll{display:block; z-index: 1; max-width: 80%;overflow-x: scroll;position:relative;left:10%;white-space: nowrap;}
+	.video_thumbnail{width:auto;height:10vh;display:inline-block;margin:1vh;filter:grayscale(85%);border: 2px solid rgba(112,112,112,1.00);}
+	.video_thumbnail:hover{filter: grayscale(0%);border: 2px solid white; cursor:pointer;}
+	.video_thumbnail img{width:auto;height:100%;}
+	.media_main{display:block; z-index: 1;}
+	#current_video{width:88.8vh;height:50vh;display:block;margin:auto;margin-top: 4%;}
